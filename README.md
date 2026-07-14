@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SUchedule
 
-## Getting Started
+A fast, modern course schedule builder for Sabancı University students.
 
-First, run the development server:
+**Live:** https://ogzozbl.github.io/suchedule/
+
+## Features
+
+- 📚 Browse all courses A–Z, or search by code / name
+- 🧱 Visual weekly grid — click a block to remove it
+- ⚠️ Instant conflict detection; conflicting sections share the slot side by side
+- 🍽️ Lunch break window and free-day filters (violating sections are dimmed, not hidden)
+- 🚫 Exclude instructors from results
+- 🔗 Share your schedule as a link, copy CRNs with one click
+- 📆 Export as `.ics` (Google / Apple Calendar) or PNG image
+- 💾 Your schedule survives refreshes (localStorage)
+- 🌗 Light / dark theme, installable PWA
+
+## Data
+
+Course data is scraped weekly from Sabancı University BannerWeb by a GitHub Action
+([`update-data.yml`](.github/workflows/update-data.yml)) and committed to
+[`src/data/courses.json`](src/data/courses.json). The current term code lives in
+[`scraper/term.txt`](scraper/term.txt) — update it each semester
+(format: `YYYYNN`, e.g. `202601` = Fall 2026–27, `02` = Spring, `03` = Summer).
+
+Run manually:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pip install -r scraper/requirements.txt
+python scraper/scrape.py 202601 src/data/courses.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Development
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Built with Next.js (App Router), TypeScript, Tailwind CSS, and Zustand.
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+Pushes to `main` deploy automatically to GitHub Pages via
+[`deploy.yml`](.github/workflows/deploy.yml). The build uses
+`NEXT_PUBLIC_BASE_PATH=/suchedule` for correct asset paths.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Credits
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Inspired by the original [SUchedule](https://github.com/aburakayaz/suchedule)
+by Adnan Burak Ayaz (MIT). This is a from-scratch redesign with a new UI and
+feature set; the scraper is adapted from the original project.
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[MIT](LICENSE)
