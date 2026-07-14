@@ -90,10 +90,10 @@ export default function ScheduleGrid({ data }: { data: CourseData }) {
   const bodyH = PERIOD_COUNT * ROW_H;
 
   return (
-    <div className="rounded-[10px] border border-line bg-surface overflow-hidden relative">
+    <div className="rounded-[10px] border border-line bg-surface overflow-x-auto relative">
       <div
-        className="grid"
-        style={{ gridTemplateColumns: `56px repeat(${dayCount}, 1fr)` }}
+        className="grid min-w-[560px] sm:min-w-0"
+        style={{ gridTemplateColumns: `48px repeat(${dayCount}, 1fr)` }}
       >
         {/* day headers */}
         <div

@@ -204,7 +204,7 @@ export default function CoursePanel({ data }: { data: CourseData }) {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search courses by code or name…"
-          className="w-full h-10 rounded-lg border border-line bg-surface-2 pl-9 pr-3 text-[12.5px] outline-none focus:ring-2 focus:ring-accent placeholder:text-muted"
+          className="w-full h-10 rounded-lg border border-line bg-surface-2 pl-9 pr-3 text-base sm:text-[12.5px] outline-none focus:ring-2 focus:ring-accent placeholder:text-muted"
         />
       </div>
 

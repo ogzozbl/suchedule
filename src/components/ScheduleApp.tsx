@@ -27,7 +27,7 @@ export default function ScheduleApp({ data }: { data: CourseData }) {
     <div className="min-h-screen flex flex-col">
       <Header data={data} />
 
-      <div className="flex-1 max-w-[1440px] mx-auto w-full px-5 py-4 flex gap-4 min-h-0">
+      <div className="flex-1 max-w-[1440px] mx-auto w-full px-3 sm:px-5 py-3 sm:py-4 flex gap-4 min-h-0">
         {/* left panel — desktop */}
         <aside className="hidden lg:flex w-[340px] shrink-0 flex-col rounded-[10px] border border-line bg-surface p-4 h-[calc(100vh-6rem)] sticky top-[4.5rem]">
           <CoursePanel data={data} />
@@ -43,7 +43,8 @@ export default function ScheduleApp({ data }: { data: CourseData }) {
       {/* mobile FAB */}
       <button
         onClick={() => setSheetOpen(true)}
-        className="lg:hidden fixed bottom-5 right-5 z-30 h-12 px-5 rounded-full bg-accent text-white dark:text-[#16182B] text-sm font-semibold shadow-lg"
+        className="lg:hidden fixed right-5 z-30 h-12 px-5 rounded-full bg-accent text-white dark:text-[#16182B] text-sm font-semibold shadow-lg"
+        style={{ bottom: "max(1.25rem, env(safe-area-inset-bottom))" }}
       >
         + Add course
       </button>
@@ -55,7 +56,10 @@ export default function ScheduleApp({ data }: { data: CourseData }) {
             className="absolute inset-0 bg-black/40"
             onClick={() => setSheetOpen(false)}
           />
-          <div className="absolute bottom-0 inset-x-0 h-[85%] rounded-t-2xl bg-surface border-t border-line p-4 flex flex-col">
+          <div
+            className="absolute bottom-0 inset-x-0 h-[85dvh] rounded-t-2xl bg-surface border-t border-line p-4 flex flex-col"
+            style={{ paddingBottom: "max(1rem, env(safe-area-inset-bottom))" }}
+          >
             <div className="flex items-center justify-between mb-3">
               <span className="text-sm font-semibold">Add courses</span>
               <button
